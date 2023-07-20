@@ -1,0 +1,2 @@
+const e=document.querySelector(".form"),o=document.querySelector('[name="delay"]');document.querySelector('[name="step"]'),document.querySelector('[name="amount"]');console.log(o);new Promise(((o,t)=>{setTimeout((()=>{e?resolve("Success! Value passed to resolve function"):reject("Error! Error passed to reject function")}),2e3)})).then((e=>{console.log(e)})).catch((e=>{console.log(e)}));
+//# sourceMappingURL=03-promises.f6c4c01c.js.map

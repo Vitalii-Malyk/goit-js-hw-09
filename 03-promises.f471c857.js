@@ -1,0 +1,2 @@
+!function(){var e=document.querySelector(".form"),o=document.querySelector('[name="delay"]');document.querySelector('[name="step"]'),document.querySelector('[name="amount"]');console.log(o),new Promise((function(o,n){setTimeout((function(){e?resolve("Success! Value passed to resolve function"):reject("Error! Error passed to reject function")}),2e3)})).then((function(e){console.log(e)})).catch((function(e){console.log(e)}))}();
+//# sourceMappingURL=03-promises.f471c857.js.map
