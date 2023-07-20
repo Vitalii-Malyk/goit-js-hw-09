@@ -19,4 +19,4 @@ stopBtnEl.addEventListener('click', () => {
   clearInterval(timerId);
   startBtnEl.disabled = false;
 });
-console.log('222');
+
