@@ -1,34 +1,16 @@
-const formEl = document.querySelector('.form');
-const delayInputEl = document.querySelector('[name="delay"]');
-const stepInputEl = document.querySelector('[name="step"]');
-const amountInputEl = document.querySelector('[name="amount"]');
+import Notiflix from 'notiflix';
 
-console.log(delayInputEl);
+const form = document.querySelector('.form');
+form.addEventListener(`submit`, onStart);
 
-const createPromise = new Promise((position, delay) => {
-  setTimeout(() => {
-    if (formEl) {
-      resolve('Success! Value passed to resolve function');
-    } else {
-      reject('Error! Error passed to reject function');
-    }
-  }, 2000);
-});
-
-createPromise
-  .then(value => {
-    console.log(value);
-  })
-  .catch(error => {
-    console.log(error);
+function createPromise(position, delay) {
+  return new Promise((resolve, rejected) => {
+    const shouldResolve = Math.random() > 0.3;
+    setTimeout(() => {
+      if (shouldResolve) {
+        resolve({ position, delay });
+      }
+      rejected({ position, delay });
+    }, delay);
   });
-
-// createPromise(2, 1500)
-//   .then(({ position, delay }) => {
-//     console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
-//   })
-//   .catch(({ position, delay }) => {
-//     console.log(`❌ Rejected promise ${position} in ${delay}ms`);
-//   });
-
-// formEl.addEventListener('submit', createPromise(position, delay));
+}

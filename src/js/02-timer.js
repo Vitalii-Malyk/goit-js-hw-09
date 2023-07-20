@@ -1,6 +1,6 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
-import { Report } from 'notiflix/build/notiflix-report-aio';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const startBtnEl = document.querySelector('[data-start]');
 
@@ -9,7 +9,7 @@ const hoursEl = document.querySelector('[data-hours]');
 const minutesEl = document.querySelector('[data-minutes]');
 const secondsEl = document.querySelector('[data-seconds]');
 
-startBtnEl.disabled = true;
+startBtnEl.setAttribute('disabled', true);
 
 const timer = {
   intervalId: null,
@@ -26,7 +26,7 @@ const timer = {
       console.log(`${days}::${hours}:${minutes}:${seconds}`);
       if (deltaTime < 1000) {
         clearInterval(this.intervalId);
-        Report.success('Success!!!');
+        Notify.success('Success!!!');
       }
     }, 1000);
   },
@@ -39,10 +39,12 @@ const fp = flatpickr('#datetime-picker', {
   minuteIncrement: 1,
   onClose(selectedDates) {
     if (selectedDates[0] < new Date()) {
-      Report.failure('Please choose a date in the future');
+      Notify.failure('Please choose a date in the future');
+      startBtnEl.disabled = true;
+    } else {
+      startBtnEl.disabled = false;
+      startBtnEl.addEventListener('click', timer.start);
     }
-    startBtnEl.disabled = false;
-    startBtnEl.addEventListener('click', timer.start);
   },
 });
 
