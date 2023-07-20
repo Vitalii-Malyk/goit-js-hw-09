@@ -7,6 +7,7 @@ function getRandomHexColor() {
     .toString(16)
     .padStart(6, 0)}`;
 }
+let timerId = null;
 
 startBtnEl.addEventListener('click', () => {
   timerId = setInterval(() => {
@@ -19,4 +20,3 @@ stopBtnEl.addEventListener('click', () => {
   clearInterval(timerId);
   startBtnEl.disabled = false;
 });
-
